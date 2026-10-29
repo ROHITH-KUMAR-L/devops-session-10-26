@@ -1,10 +1,19 @@
+
 {
   "name": "DevOps Workshop",
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {}
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "enableNonRootDocker": true
+    },
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+      "version": "latest",
+      "kubectl": "latest",
+      "helm": "latest",
+      "minikube": "latest"
+    }
   },
   "forwardPorts": [3000, 8080],
-  "postCreateCommand": "docker --version && minikube version && kubectl version --client"
+  "postCreateCommand": "bash -lc 'set -e; docker --version; kubectl version --client; minikube version; helm version --short'"
 }
