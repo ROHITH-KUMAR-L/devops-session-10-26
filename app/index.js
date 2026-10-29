@@ -13,6 +13,15 @@ app.get("/", (req, res) => {
 
 app.get("/health", (req, res) => res.json({ status: "ok", version: VERSION, host: os.hostname() }));
 
+
+app.get("/docs", (req, res) =>{
+  obj = {
+    'devops' : 'Explanation of docker and kubernetes',
+    'version-control-system' : 'Git'
+  }
+  res.send(obj)
+});
+
 if (require.main === module) {
   app.listen(PORT, () => console.log(`App ${VERSION} listening on port ${PORT}`));
 }
